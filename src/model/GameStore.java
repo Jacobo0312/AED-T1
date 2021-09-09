@@ -1,44 +1,47 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 
 public class GameStore {
 
-    private ArrayList<Game> games;
+    private int cashiers;
+    private ArrayList<Shelve> shelves;
+    private ArrayList<Customer> customers;
 
-
-
-    public GameStore() {
-        games=new ArrayList<>();
-
-
-        try {
-            importGames();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-
+    public GameStore(int cashiers, ArrayList<Shelve> shelves, ArrayList<Customer> customers) {
+        this.cashiers = cashiers;
+        this.shelves = shelves;
+        this.customers = customers;
     }
 
-    private void importGames() throws FileNotFoundException, IOException,NumberFormatException {
-        String file = "data/dataset_games.csv";
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line=br.readLine();
-        while ((line = br.readLine()) != null) {
-            String[] game = line.split(";");
-            
-            games.add(new Game(Integer.parseInt(game[0]), game[1], game[2], Integer.parseInt(game[3]), game[4], game[5]));
-        }
+    public int getCashiers() {
+        return this.cashiers;
+    }
 
-        br.close();
+    public void setCashiers(int cashiers) {
+        this.cashiers = cashiers;
+    }
+
+    public ArrayList<Shelve> getShelves() {
+        return this.shelves;
+    }
+
+    public void setShelves(ArrayList<Shelve> shelves) {
+        this.shelves = shelves;
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return this.customers;
+    }
+
+    public void setCustomers(ArrayList<Customer> customers) {
+        this.customers = customers;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " cashiers='" + getCashiers() + "'" + ", shelves='" + getShelves() + "'" + ", customers='"
+                + getCustomers() + "'" + "}";
     }
 
 }
