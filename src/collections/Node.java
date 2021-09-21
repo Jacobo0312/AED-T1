@@ -3,11 +3,13 @@ package collections;
 public class Node<E> {
 
     private Node<E> next;
-    private Node<E> previus;
+    private Node<E> previous;
     private E item;
 
     public Node(E item) {
         this.item = item;
+        this.next = null;
+        this.previous = null;
     }
 
     public Node<E> getNext() {
@@ -18,12 +20,12 @@ public class Node<E> {
         this.next = next;
     }
 
-    public Node<E> getPrevius() {
-        return previus;
+    public Node<E> getPrevious() {
+        return previous;
     }
 
-    public void setPrevius(Node<E> previus) {
-        this.previus = previus;
+    public void setPrevious(Node<E> previus) {
+        this.previous = previus;
     }
 
     public E getItem() {
@@ -36,7 +38,7 @@ public class Node<E> {
 
     @Override
     public String toString() {
-        return "{" + getItem();
+        return getItem()+"";
     }
 
 }

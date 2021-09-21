@@ -13,7 +13,7 @@ public class StackList<E> implements IStackList<E> {
             top = new Node<E>(value);
         } else {
             Node<E> node = new Node<>(value);
-            node.setPrevius(top);
+            node.setPrevious(top);
             top = node;
         }
     }
@@ -21,8 +21,8 @@ public class StackList<E> implements IStackList<E> {
     public Node<E> pop() {
 
         Node<E> temp = top;
-        if (top.getPrevius() != null) {
-            top = top.getPrevius();
+        if (top.getPrevious() != null) {
+            top = top.getPrevious();
         } else {
             top = null;
         }

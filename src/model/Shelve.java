@@ -1,14 +1,14 @@
 package model;
 
-import java.util.ArrayList;
+import collections.LinkedList;
 
 public class Shelve {
 
     private String id;
     private int amountGames;
-    private ArrayList<Game> gameList;
+    private LinkedList<Game> gameList;
 
-    public Shelve(String id, int amountGames, ArrayList<Game> gameList) {
+    public Shelve(String id, int amountGames, LinkedList<Game> gameList) {
         this.id = id;
         this.amountGames = amountGames;
         this.gameList = gameList;
@@ -30,11 +30,11 @@ public class Shelve {
         this.amountGames = amountGames;
     }
 
-    public ArrayList<Game> getGameList() {
+    public LinkedList<Game> getGameList() {
         return this.gameList;
     }
 
-    public void setGameList(ArrayList<Game> gameList) {
+    public void setGameList(LinkedList<Game> gameList) {
         this.gameList = gameList;
     }
 
@@ -43,8 +43,8 @@ public class Shelve {
 
         String games = "";
 
-        for (Game game : gameList) {
-            games += game.toString();
+        for (int i = 0; i < gameList.size(); i++) {
+            games += gameList.get(i).toString();
         }
 
         return "\n-------------------" + getId() + "-------------------" + "\n" + games;

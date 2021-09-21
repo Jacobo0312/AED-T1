@@ -1,14 +1,14 @@
 package model;
 
-import java.util.ArrayList;
+import collections.LinkedList;
 
 public class GameStore {
 
     private int cashiers;
-    private ArrayList<Shelve> shelves;
-    private ArrayList<Customer> customers;
+    private LinkedList<Shelve> shelves;
+    private LinkedList<Customer> customers;
 
-    public GameStore(int cashiers, ArrayList<Shelve> shelves, ArrayList<Customer> customers) {
+    public GameStore(int cashiers, LinkedList<Shelve> shelves, LinkedList<Customer> customers) {
         this.cashiers = cashiers;
         this.shelves = shelves;
         this.customers = customers;
@@ -22,29 +22,31 @@ public class GameStore {
         this.cashiers = cashiers;
     }
 
-    public ArrayList<Shelve> getShelves() {
+    public LinkedList<Shelve> getShelves() {
         return this.shelves;
     }
 
-    public void setShelves(ArrayList<Shelve> shelves) {
+    public void setShelves(LinkedList<Shelve> shelves) {
         this.shelves = shelves;
     }
 
     public String toStringShelves() {
 
         String message = "\nSHELVES:";
-        for (Shelve shelve : shelves) {
-            message += shelve.toString();
+
+        for (int i = 0; i < shelves.size(); i++) {
+            message += shelves.get(i).toString();
 
         }
+
         return message;
     }
 
-    public ArrayList<Customer> getCustomers() {
+    public LinkedList<Customer> getCustomers() {
         return this.customers;
     }
 
-    public void setCustomers(ArrayList<Customer> customers) {
+    public void setCustomers(LinkedList<Customer> customers) {
         this.customers = customers;
     }
 
@@ -55,7 +57,13 @@ public class GameStore {
     }
 
     public String section1() {
-        return null;
+        String message = "\nSECTION 1:\n";
+
+        for (int i = 0; i < customers.size(); i++) {
+            message += customers.get(i).toString() + "\n";
+
+        }
+        return message;
     }
 
 }

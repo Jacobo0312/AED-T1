@@ -1,16 +1,12 @@
 package ui;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
-import model.Customer;
-import model.Game;
-import model.GameStore;
-import model.Shelve;
+import collections.LinkedList;
+import model.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         int cases = sc.nextInt();
@@ -19,13 +15,13 @@ public class Main {
 
             int cashiers = sc.nextInt();
             int shelves = sc.nextInt();
-            ArrayList<Shelve> shelvesList = new ArrayList<Shelve>();
+            LinkedList<Shelve> shelvesList = new LinkedList<Shelve>();
 
             for (int j = 0; j < shelves; j++) {
 
                 String id = sc.next();
                 int games = sc.nextInt();
-                ArrayList<Game> gamesList = new ArrayList<Game>();
+                LinkedList<Game> gamesList = new LinkedList<Game>();
 
                 for (int k = 0; k < games; k++) {
                     gamesList.add(new Game(sc.nextInt(), sc.nextInt(), sc.nextInt()));
@@ -35,14 +31,14 @@ public class Main {
 
             }
 
-            ArrayList<Customer> customersList = new ArrayList<>();
+            LinkedList<Customer> customersList = new LinkedList<>();
             int customers = sc.nextInt();
             sc.nextLine();
             for (int j = 0; j < customers; j++) {
 
                 String[] line = sc.nextLine().split(" ");
                 int id_customer = Integer.parseInt(line[0]);
-                ArrayList<Integer> list = new ArrayList<>();
+                LinkedList<Integer> list = new LinkedList<>();
                 for (int k = 1; k < line.length; k++) {
                     list.add(Integer.parseInt(line[k]));
                 }
@@ -53,10 +49,10 @@ public class Main {
 
             GameStore gameStore = new GameStore(cashiers, shelvesList, customersList);
 
-            //SHOW SHELVES
+            // SHOW SHELVES
             System.out.println(gameStore.toStringShelves());
 
-            //SECTION 1
+            // SECTION 1
             System.out.println(gameStore.section1());
 
         }
