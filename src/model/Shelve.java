@@ -40,8 +40,15 @@ public class Shelve {
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", amountGames='" + getAmountGames() + "'" + ", gameList='"
-                + getGameList() + "'" + "}";
+
+        String games = "";
+
+        for (Game game : gameList) {
+            games += game.toString();
+        }
+
+        return "\n-------------------" + getId() + "-------------------" + "\n" + games;
+
     }
 
 }

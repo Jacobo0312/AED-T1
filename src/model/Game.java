@@ -38,8 +38,7 @@ public class Game {
 
     @Override
     public String toString() {
-        return "{" + " code='" + getCode() + "'" + ", price='" + getPrice() + "'" + ", amount='" + getAmount() + "'"
-                + "}";
+        return "CODE: " + getCode() + "     " + "PRICE:" + getPrice() + "     " + "AMOUNT: " + getAmount() + "\n";
     }
 
 }

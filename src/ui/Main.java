@@ -13,7 +13,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
-
         int cases = sc.nextInt();
 
         for (int i = 0; i < cases; i++) {
@@ -34,14 +33,13 @@ public class Main {
 
                 shelvesList.add(new Shelve(id, games, gamesList));
 
-                // Here create the shelve
-
             }
 
             ArrayList<Customer> customersList = new ArrayList<>();
             int customers = sc.nextInt();
             sc.nextLine();
             for (int j = 0; j < customers; j++) {
+
                 String[] line = sc.nextLine().split(" ");
                 int id_customer = Integer.parseInt(line[0]);
                 ArrayList<Integer> list = new ArrayList<>();
@@ -54,7 +52,13 @@ public class Main {
             }
 
             GameStore gameStore = new GameStore(cashiers, shelvesList, customersList);
-            System.out.println(gameStore);
+
+            //SHOW SHELVES
+            System.out.println(gameStore.toStringShelves());
+
+            //SECTION 1
+            System.out.println(gameStore.section1());
+
         }
 
         sc.close();

@@ -30,6 +30,16 @@ public class GameStore {
         this.shelves = shelves;
     }
 
+    public String toStringShelves() {
+
+        String message = "\nSHELVES:";
+        for (Shelve shelve : shelves) {
+            message += shelve.toString();
+
+        }
+        return message;
+    }
+
     public ArrayList<Customer> getCustomers() {
         return this.customers;
     }
@@ -42,6 +52,10 @@ public class GameStore {
     public String toString() {
         return "{" + " cashiers='" + getCashiers() + "'" + ", shelves='" + getShelves() + "'" + ", customers='"
                 + getCustomers() + "'" + "}";
+    }
+
+    public String section1() {
+        return null;
     }
 
 }
