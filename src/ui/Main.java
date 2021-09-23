@@ -10,6 +10,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int cases = sc.nextInt();
+        int value=1;
 
         for (int i = 0; i < cases; i++) {
 
@@ -24,7 +25,8 @@ public class Main {
                 LinkedList<Game> gamesList = new LinkedList<Game>();
 
                 for (int k = 0; k < games; k++) {
-                    gamesList.add(new Game(sc.nextInt(), sc.nextInt(), sc.nextInt()));
+                    
+                    gamesList.add(new Game(sc.nextInt(), sc.nextInt(), sc.nextInt(),value++));
                 }
 
                 shelvesList.add(new Shelve(id, games, gamesList));
@@ -49,11 +51,13 @@ public class Main {
 
             GameStore gameStore = new GameStore(cashiers, shelvesList, customersList);
 
-            // SHOW SHELVES
+
             System.out.println(gameStore.toStringShelves());
 
-            // SECTION 1
             System.out.println(gameStore.section1());
+
+
+
 
         }
 

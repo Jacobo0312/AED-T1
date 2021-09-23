@@ -5,6 +5,7 @@ import collections.LinkedList;
 public class Customer {
 
     private int id;
+    //Esto debe ser <Game>
     private LinkedList<Integer> gameList;
 
     public Customer(int id, LinkedList<Integer> gameList) {

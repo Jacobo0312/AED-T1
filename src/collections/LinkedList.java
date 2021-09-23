@@ -134,6 +134,11 @@ public class LinkedList<E> implements ILinkedList<E>{
 
     }
 
+
+    public void set(int index,E e){
+        getNode(index).setItem(e);
+    }
+
     private E get(int index, Node<E> temp) {
 
         if (index == 0) {
