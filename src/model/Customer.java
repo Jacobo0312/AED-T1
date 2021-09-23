@@ -1,19 +1,21 @@
 package model;
 
-import collections.LinkedList;
+import collections.*;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
 
     private int id;
     private LinkedList<Integer> gameList;
     private LinkedList<Game> games;
     private int time;
+    private StackList<Game> shoppingBag;
 
     public Customer(int id, LinkedList<Integer> gameList,int time) {
         this.id = id;
         this.gameList = gameList;
         this.games=new LinkedList<>();
         this.time=time;
+        this.shoppingBag=new StackList<>();
     }
 
     public int getId() {
@@ -52,6 +54,17 @@ public class Customer {
 
 
 
+    public StackList<Game> getShoppingBag() {
+        return this.shoppingBag;
+    }
+
+    public void setShoppingBag(StackList<Game> shoppingBag) {
+        this.shoppingBag = shoppingBag;
+    }
+
+
+
+
     @Override
     public String toString() {
 
@@ -62,6 +75,16 @@ public class Customer {
         }
 
         return "ID:" + getId()+"\n" + gamesString;
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return getTime()-o.getTime();
+    }
+
+    public void addTime() {
+
+        this.time=getTime()+1;
     }
 
 }

@@ -50,7 +50,7 @@ public class Game implements Comparable<Game>{
 
     @Override
     public String toString() {
-        return "CODE: " + getCode() + "     " + "PRICE:" + getPrice() + "     " + "AMOUNT: " + getAmount() + "\n";
+        return "CODE: " + getCode() + "     " + "PRICE:" + getPrice() + "     " + "AMOUNT: " + getAmount() + "VALUE: " + getValue()+ "\n";
     }
 
     @Override

@@ -1,11 +1,13 @@
 package collections;
 
+import java.util.Iterator;
+
 /**
  * The type Me linked list.
  *
  * @param <E> the type parameter
  */
-public class LinkedList<E> implements ILinkedList<E>{
+public class LinkedList<E> implements ILinkedList<E>,Iterable<E>{
 
     private Node<E> head;
     private Node<E> tail;
@@ -192,5 +194,12 @@ public class LinkedList<E> implements ILinkedList<E>{
         size -= 1;
     }
 
+    @Override
+    public Iterator<E> iterator()
+    {
+        return new ListIterator<E>(this);
+    }
+
+      
 
 }

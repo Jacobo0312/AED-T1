@@ -10,7 +10,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int cases = sc.nextInt();
-        int value=1;
+        int valueTotal = 0;
 
         for (int i = 0; i < cases; i++) {
 
@@ -21,13 +21,18 @@ public class Main {
 
             for (int j = 0; j < shelves; j++) {
 
+                
+
                 String id = sc.next();
                 int gamesForShelve = sc.nextInt();
                 LinkedList<Game> gamesList = new LinkedList<Game>();
 
+                valueTotal+=gamesForShelve;
+                int value=valueTotal;
+
                 for (int k = 0; k < gamesForShelve; k++) {
 
-                     Game game=new Game(sc.nextInt(), sc.nextInt(), sc.nextInt(),value++);
+                    Game game = new Game(sc.nextInt(), sc.nextInt(), sc.nextInt(), value--);
                     gamesList.add(game);
                     games.add(game);
                 }
@@ -39,7 +44,7 @@ public class Main {
             LinkedList<Customer> customersList = new LinkedList<>();
             int customers = sc.nextInt();
             sc.nextLine();
-            int time=1;
+            int time = 1;
             for (int j = 0; j < customers; j++) {
 
                 String[] line = sc.nextLine().split(" ");
@@ -49,22 +54,22 @@ public class Main {
                     list.add(Integer.parseInt(line[k]));
                 }
 
-                customersList.add(new Customer(id_customer, list,time++));
+                customersList.add(new Customer(id_customer, list, time++));
 
             }
 
-            GameStore gameStore = new GameStore(cashiers, shelvesList, customersList,games);
-
+            GameStore gameStore = new GameStore(cashiers, shelvesList, customersList, games);
 
             System.out.println(gameStore.toStringShelves());
 
-            //SECTION 1 IT WORKS
+            // SECTION 1 IT WORKS
             System.out.println(gameStore.section1());
-            
 
-             //SECTION 2 IT WORKS
+            // SECTION 2 IT WORKS
             System.out.println(gameStore.section2());
 
+            // SECTION 3 IT WORKS
+            System.out.println(gameStore.section3());
 
 
         }
