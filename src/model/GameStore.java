@@ -7,11 +7,13 @@ public class GameStore {
     private int cashiers;
     private LinkedList<Shelve> shelves;
     private LinkedList<Customer> customers;
+    private LinkedList<Game> games;
 
-    public GameStore(int cashiers, LinkedList<Shelve> shelves, LinkedList<Customer> customers) {
+    public GameStore(int cashiers, LinkedList<Shelve> shelves, LinkedList<Customer> customers, LinkedList<Game> games) {
         this.cashiers = cashiers;
         this.shelves = shelves;
         this.customers = customers;
+        this.games = games;
     }
 
     public int getCashiers() {
@@ -58,7 +60,26 @@ public class GameStore {
 
     public String section1() {
 
-        String message = "\nSECTION 1:\n";
+        for (int i = 0; i < customers.size(); i++) {
+
+            LinkedList<Game> gameListCustomer = new LinkedList<>();
+            LinkedList<Integer> codeGames = customers.get(i).getGameList();
+
+            //try with binary search
+
+            for (int j = 0; j < codeGames.size(); j++) {
+                for (int k = 0; k < games.size(); k++) {
+                    if (codeGames.get(j) == games.get(k).getCode()) {
+                        gameListCustomer.add(games.get(k));
+                    }
+
+                }
+            }
+
+            customers.get(i).setGames(gameListCustomer);
+        }
+
+        String message = "\nSECTION 1:\n\n";
 
         for (int i = 0; i < customers.size(); i++) {
             message += customers.get(i).toString() + "\n";
@@ -66,6 +87,30 @@ public class GameStore {
         }
         return message;
     }
+
+
+    public String section2() {
+
+        for (int i = 0; i < customers.size(); i++) {
+
+
+        }
+
+        String message = "\nSECTION 2:\n\n";
+
+        for (int i = 0; i < customers.size(); i++) {
+            Customer customer=customers.get(i);
+            //Calculate the best route
+            insertionSort(customer.getGames());
+            message += customer.toString();
+            message+="TIME: "+customer.getTime() + "\n";
+
+        }
+        return message;
+    }
+
+
+
 
     public void insertionSort(LinkedList<Game> games) {
         int n = games.size();
