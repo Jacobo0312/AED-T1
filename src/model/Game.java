@@ -1,15 +1,17 @@
 package model;
 
-public class Game {
+public class Game implements Comparable<Game>{
 
     private int code;
     private int price;
     private int amount;
+    private int value;
 
-    public Game(int code, int price, int amount) {
+    public Game(int code, int price, int amount,int value) {
         this.code = code;
         this.price = price;
         this.amount = amount;
+        this.value=value;
     }
 
     public int getCode() {
@@ -36,10 +38,24 @@ public class Game {
         this.amount = amount;
     }
 
+
+    public int getValue() {
+        return this.value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+
     @Override
     public String toString() {
-        return "{" + " code='" + getCode() + "'" + ", price='" + getPrice() + "'" + ", amount='" + getAmount() + "'"
-                + "}";
+        return "CODE: " + getCode() + "     " + "PRICE:" + getPrice() + "     " + "AMOUNT: " + getAmount() + "VALUE: " + getValue()+ "\n";
+    }
+
+    @Override
+    public int compareTo(Game o) {
+        return getValue()-(o.getValue());
     }
 
 }

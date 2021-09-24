@@ -1,60 +1,77 @@
 package ui;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
-import model.Customer;
-import model.Game;
-import model.GameStore;
-import model.Shelve;
+import collections.LinkedList;
+import model.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-
         int cases = sc.nextInt();
+        int valueTotal = 0;
 
         for (int i = 0; i < cases; i++) {
 
             int cashiers = sc.nextInt();
             int shelves = sc.nextInt();
-            ArrayList<Shelve> shelvesList = new ArrayList<Shelve>();
+            LinkedList<Shelve> shelvesList = new LinkedList<Shelve>();
+            LinkedList<Game> games = new LinkedList<Game>();
 
             for (int j = 0; j < shelves; j++) {
 
-                String id = sc.next();
-                int games = sc.nextInt();
-                ArrayList<Game> gamesList = new ArrayList<Game>();
+                
 
-                for (int k = 0; k < games; k++) {
-                    gamesList.add(new Game(sc.nextInt(), sc.nextInt(), sc.nextInt()));
+                String id = sc.next();
+                int gamesForShelve = sc.nextInt();
+                LinkedList<Game> gamesList = new LinkedList<Game>();
+
+                valueTotal+=gamesForShelve;
+                int value=valueTotal;
+
+                for (int k = 0; k < gamesForShelve; k++) {
+
+                    Game game = new Game(sc.nextInt(), sc.nextInt(), sc.nextInt(), value--);
+                    gamesList.add(game);
+                    games.add(game);
                 }
 
-                shelvesList.add(new Shelve(id, games, gamesList));
-
-                // Here create the shelve
+                shelvesList.add(new Shelve(id, gamesForShelve, gamesList));
 
             }
 
-            ArrayList<Customer> customersList = new ArrayList<>();
+            LinkedList<Customer> customersList = new LinkedList<>();
             int customers = sc.nextInt();
             sc.nextLine();
+            int time = 1;
             for (int j = 0; j < customers; j++) {
+
                 String[] line = sc.nextLine().split(" ");
                 int id_customer = Integer.parseInt(line[0]);
-                ArrayList<Integer> list = new ArrayList<>();
+                LinkedList<Integer> list = new LinkedList<>();
                 for (int k = 1; k < line.length; k++) {
                     list.add(Integer.parseInt(line[k]));
                 }
 
-                customersList.add(new Customer(id_customer, list));
+                customersList.add(new Customer(id_customer, list, time++));
 
             }
 
-            GameStore gameStore = new GameStore(cashiers, shelvesList, customersList);
-            System.out.println(gameStore);
+            GameStore gameStore = new GameStore(cashiers, shelvesList, customersList, games);
+
+            System.out.println(gameStore.toStringShelves());
+
+            // SECTION 1 IT WORKS
+            System.out.println(gameStore.section1());
+
+            // SECTION 2 IT WORKS
+            System.out.println(gameStore.section2());
+
+            // SECTION 3 IT WORKS
+            System.out.println(gameStore.section3());
+
+
         }
 
         sc.close();
