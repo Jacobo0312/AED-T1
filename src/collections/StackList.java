@@ -45,14 +45,23 @@ public class StackList<E> implements IStackList<E> {
     public String toString(){
 
         String message="";
-        message+=top.getItem().toString();
-        Node <E> temp=top;
-        while (temp.getPrevious() !=null) {
-            temp=temp.getPrevious();
-            message+=temp.getItem().toString();
-            
+
+        if (!isEmpty()){
+            message+=top.getItem().toString();
+            Node <E> temp=top;
+            while (temp.getPrevious() !=null) {
+                temp=temp.getPrevious();
+                message+=temp.getItem().toString();
+                
+            }
+        }else{
+            message+="isEmpty";
+
         }
+     
         return message;
 
     }
+
+
 }

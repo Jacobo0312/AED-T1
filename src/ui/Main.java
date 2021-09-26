@@ -60,16 +60,18 @@ public class Main {
 
             GameStore gameStore = new GameStore(cashiers, shelvesList, customersList, games);
 
-            System.out.println(gameStore.toStringShelves());
+            //System.out.println(gameStore.toStringShelves());
 
             // SECTION 1 IT WORKS
-            System.out.println(gameStore.section1());
+            gameStore.section1();
 
             // SECTION 2 IT WORKS
-            System.out.println(gameStore.section2());
+            gameStore.section2();
 
             // SECTION 3 IT WORKS
-            System.out.println(gameStore.section3());
+            gameStore.section3();
+
+           System.out.println(gameStore.checkoutLine());
 
 
         }

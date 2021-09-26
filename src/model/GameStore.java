@@ -1,27 +1,41 @@
 package model;
 
 import collections.LinkedList;
+import collections.QueueList;
 import collections.StackList;
+import jdk.nashorn.api.tree.Tree;
 
 public class GameStore {
 
-    private int cashiers;
+    private LinkedList<Cashier> cashiers;
     private LinkedList<Shelve> shelves;
     private LinkedList<Customer> customers;
     private LinkedList<Game> games;
 
-    public GameStore(int cashiers, LinkedList<Shelve> shelves, LinkedList<Customer> customers, LinkedList<Game> games) {
-        this.cashiers = cashiers;
+    public GameStore(int cashiersNumber, LinkedList<Shelve> shelves, LinkedList<Customer> customers,
+            LinkedList<Game> games) {
         this.shelves = shelves;
         this.customers = customers;
         this.games = games;
+        this.cashiers = createCashier(cashiersNumber);
+
     }
 
-    public int getCashiers() {
+    private LinkedList<Cashier> createCashier(int cashiersNumber) {
+
+        LinkedList<Cashier> cashiers = new LinkedList<>();
+
+        for (int i = 0; i < cashiersNumber; i++) {
+            cashiers.add(new Cashier(i));
+        }
+        return cashiers;
+    }
+
+    public LinkedList<Cashier> getCashiers() {
         return this.cashiers;
     }
 
-    public void setCashiers(int cashiers) {
+    public void setCashiers(LinkedList<Cashier> cashiers) {
         this.cashiers = cashiers;
     }
 
@@ -53,20 +67,12 @@ public class GameStore {
         this.customers = customers;
     }
 
-    @Override
-    public String toString() {
-        return "{" + " cashiers='" + getCashiers() + "'" + ", shelves='" + getShelves() + "'" + ", customers='"
-                + getCustomers() + "'" + "}";
-    }
-
     public String section1() {
 
         for (Customer customer : customers) {
 
             LinkedList<Game> gameListCustomer = new LinkedList<>();
             LinkedList<Integer> codeGames = customer.getGameList();
-
-            // try with binary search
 
             for (Integer code : codeGames) {
                 for (Game game : games) {
@@ -97,7 +103,7 @@ public class GameStore {
             // Calculate the best route
             insertionSort(customer.getGames());
             message += customer.toString();
-            message += "TIME: " + customer.getTime() + "\n";
+            message += "TIME: " + customer.getTime() + "\n\n";
         }
 
         return message;
@@ -125,8 +131,8 @@ public class GameStore {
 
         for (Customer customer : customers) {
             message += "ID:" + customer.getId() + "\n";
-            message += customer.getShoppingBag().toString();
-            message += "TIME: " + customer.getTime() + "\n";
+            message += customer.getShoppingBag();
+            message += "TIME: " + customer.getTime() + "\n\n";
         }
 
         return message;
@@ -172,6 +178,63 @@ public class GameStore {
                     games.set(j, games.get(j + 1));
                     games.set(j + 1, temp);
                 }
+    }
+
+    private QueueList<Customer> enqueueCustomers() {
+        QueueList<Customer> queueList = new QueueList<>();
+        for (Customer customer : customers) {
+            queueList.enqueue(customer);
+
+        }
+
+        return queueList;
+    }
+
+    public String checkoutLine() {
+        String message = "";
+
+        QueueList<Customer> queueList = enqueueCustomers();
+
+        // message += "\n------CHECKOUT LINE------\n" + queueList;
+
+        int time = 0;
+        Boolean allExit = false;
+
+        while (!allExit) {
+
+            message += "\nTIME: " + time + "\n";
+            time++;
+            for (int i = 0; i < cashiers.size(); i++) {
+                Cashier cashier = cashiers.get(i);
+
+                if (cashier.isEmpty() && !queueList.isEmpty()) {
+
+                    cashier.setCustomer(queueList.dequeue().getItem());
+                } else {
+                    cashier.passGame();
+                    if (cashier.isEmpty() && !queueList.isEmpty())
+                        cashier.setCustomer(queueList.dequeue().getItem());
+                }
+                message += "\n" + cashier + "\n";
+            }
+
+            if (allCashierIsEmpty()) {
+                allExit = true;
+            }
+
+        }
+
+        return message;
+    }
+
+    private boolean allCashierIsEmpty() {
+
+        for (Cashier cashier : cashiers) {
+            if (!cashier.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
