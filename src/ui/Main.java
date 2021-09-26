@@ -21,14 +21,12 @@ public class Main {
 
             for (int j = 0; j < shelves; j++) {
 
-                
-
                 String id = sc.next();
                 int gamesForShelve = sc.nextInt();
                 LinkedList<Game> gamesList = new LinkedList<Game>();
 
-                valueTotal+=gamesForShelve;
-                int value=valueTotal;
+                valueTotal += gamesForShelve;
+                int value = valueTotal;
 
                 for (int k = 0; k < gamesForShelve; k++) {
 
@@ -60,7 +58,7 @@ public class Main {
 
             GameStore gameStore = new GameStore(cashiers, shelvesList, customersList, games);
 
-            //System.out.println(gameStore.toStringShelves());
+            // System.out.println(gameStore.toStringShelves());
 
             // SECTION 1 IT WORKS
             gameStore.section1();
@@ -71,8 +69,8 @@ public class Main {
             // SECTION 3 IT WORKS
             gameStore.section3();
 
-           System.out.println(gameStore.checkoutLine());
-
+            // CHECKOUTLINE IT WORKS
+            gameStore.checkoutLine();
 
         }
 
