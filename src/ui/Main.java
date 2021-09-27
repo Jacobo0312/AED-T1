@@ -10,30 +10,39 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int cases = sc.nextInt();
+        int valueTotal = 0;
 
         for (int i = 0; i < cases; i++) {
 
             int cashiers = sc.nextInt();
             int shelves = sc.nextInt();
             LinkedList<Shelve> shelvesList = new LinkedList<Shelve>();
+            LinkedList<Game> games = new LinkedList<Game>();
 
             for (int j = 0; j < shelves; j++) {
 
                 String id = sc.next();
-                int games = sc.nextInt();
+                int gamesForShelve = sc.nextInt();
                 LinkedList<Game> gamesList = new LinkedList<Game>();
 
-                for (int k = 0; k < games; k++) {
-                    gamesList.add(new Game(sc.nextInt(), sc.nextInt(), sc.nextInt()));
+                valueTotal += gamesForShelve;
+                int value = valueTotal;
+
+                for (int k = 0; k < gamesForShelve; k++) {
+
+                    Game game = new Game(sc.nextInt(), sc.nextInt(), sc.nextInt(), value--);
+                    gamesList.add(game);
+                    games.add(game);
                 }
 
-                shelvesList.add(new Shelve(id, games, gamesList));
+                shelvesList.add(new Shelve(id, gamesForShelve, gamesList));
 
             }
 
             LinkedList<Customer> customersList = new LinkedList<>();
             int customers = sc.nextInt();
             sc.nextLine();
+            int time = 1;
             for (int j = 0; j < customers; j++) {
 
                 String[] line = sc.nextLine().split(" ");
@@ -43,17 +52,25 @@ public class Main {
                     list.add(Integer.parseInt(line[k]));
                 }
 
-                customersList.add(new Customer(id_customer, list));
+                customersList.add(new Customer(id_customer, list, time++));
 
             }
 
-            GameStore gameStore = new GameStore(cashiers, shelvesList, customersList);
+            GameStore gameStore = new GameStore(cashiers, shelvesList, customersList, games);
 
-            // SHOW SHELVES
-            System.out.println(gameStore.toStringShelves());
+            // System.out.println(gameStore.toStringShelves());
 
-            // SECTION 1
-            System.out.println(gameStore.section1());
+            // SECTION 1 IT WORKS
+            gameStore.section1();
+
+            // SECTION 2 IT WORKS
+            gameStore.section2();
+
+            // SECTION 3 IT WORKS
+            gameStore.section3();
+
+            // CHECKOUTLINE IT WORKS
+            gameStore.checkoutLine();
 
         }
 

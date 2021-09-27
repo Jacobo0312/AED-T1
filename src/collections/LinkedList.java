@@ -1,75 +1,39 @@
 package collections;
 
-/**
- * The type Me linked list.
- *
- * @param <E> the type parameter
- */
-public class LinkedList<E> implements ILinkedList<E>{
+import java.util.Iterator;
+
+public class LinkedList<E> implements ILinkedList<E>, Iterable<E> {
 
     private Node<E> head;
     private Node<E> tail;
     private int size;
 
-    /**
-     * Instantiates a new Me linked list.
-     */
     public LinkedList() {
         head = null;
         size = 0;
         tail = null;
     }
 
-    /**
-     * Gets head.
-     *
-     * @return the head
-     */
     public Node<E> getHead() {
         return head;
     }
 
-    /**
-     * Gets tail.
-     *
-     * @return the tail
-     */
     public Node<E> getTail() {
         return tail;
     }
 
-    /**
-     * Is empty boolean.
-     *
-     * @return the boolean
-     */
     public boolean isEmpty() {
         return (head == null) ? true : false;
     }
 
-    /**
-     * Size int.
-     *
-     * @return the int
-     */
     public int size() {
         return size;
     }
 
-    /**
-     * Sets size.
-     *
-     * @param size the size
-     */
     public void setSize(int size) {
         this.size = size;
     }
 
-    /**
-     * Add.
-     *
-     * @param e the e
-     */
     public void add(E e) {
 
         if (head == null) {
@@ -102,12 +66,6 @@ public class LinkedList<E> implements ILinkedList<E>{
 
     }
 
-    /**
-     * Index of int.
-     *
-     * @param e the e
-     * @return the int
-     */
     public int indexOf(E e) {
         return indexOf(e, head, 0);
     }
@@ -122,16 +80,14 @@ public class LinkedList<E> implements ILinkedList<E>{
         }
     }
 
-    /**
-     * Get e.
-     *
-     * @param index the index
-     * @return the e
-     */
     public E get(int index) {
 
         return get(index, head);
 
+    }
+
+    public void set(int index, E e) {
+        getNode(index).setItem(e);
     }
 
     private E get(int index, Node<E> temp) {
@@ -146,12 +102,6 @@ public class LinkedList<E> implements ILinkedList<E>{
 
     }
 
-    /**
-     * Get node node.
-     *
-     * @param index the index
-     * @return the node
-     */
     public Node<E> getNode(int index) {
 
         return getNode(index, head);
@@ -170,11 +120,6 @@ public class LinkedList<E> implements ILinkedList<E>{
 
     }
 
-    /**
-     * Remove.
-     *
-     * @param index the index
-     */
     public void remove(int index) {
         if (index == 0) {
             head = head.getNext();
@@ -187,5 +132,9 @@ public class LinkedList<E> implements ILinkedList<E>{
         size -= 1;
     }
 
+    @Override
+    public Iterator<E> iterator() {
+        return new ListIterator<E>(this);
+    }
 
 }

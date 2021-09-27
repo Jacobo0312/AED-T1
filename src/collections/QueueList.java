@@ -57,4 +57,24 @@ public class QueueList<E> implements IQueueList<E> {
 
     }
 
+    public String toString() {
+
+        String message = "";
+
+        if (!isEmpty()) {
+            message += front.getItem().toString();
+            Node<E> temp = front;
+            while (temp.getNext() != null) {
+                temp = temp.getNext();
+                message += "\n"+temp.getItem().toString();
+            }
+
+        }else{
+            message+="isEmpty";
+        }
+        
+        return message;
+
+    }
+
 }

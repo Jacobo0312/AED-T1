@@ -40,4 +40,28 @@ public class StackList<E> implements IStackList<E> {
             return false;
         }
     }
+
+
+    public String toString(){
+
+        String message="";
+
+        if (!isEmpty()){
+            message+=top.getItem().toString();
+            Node <E> temp=top;
+            while (temp.getPrevious() !=null) {
+                temp=temp.getPrevious();
+                message+=temp.getItem().toString();
+                
+            }
+        }else{
+            message+="isEmpty";
+
+        }
+     
+        return message;
+
+    }
+
+
 }
