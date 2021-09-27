@@ -2,11 +2,32 @@ package ui;
 
 import java.util.Scanner;
 import collections.LinkedList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import model.*;
 
-public class Main {
+public class Main extends Application{
+
+    private GameStoreController gameStoreController;
+    private GameStore gameStore;
+
+
+    
+    public Main(){
+        gameStore = new GameStore();
+        gameStoreController = new GameStoreController(gameStore);
+
+        
+    }
 
     public static void main(String[] args) {
+
+        launch(args);
+
+        /*
 
         Scanner sc = new Scanner(System.in);
         int cases = sc.nextInt();
@@ -75,6 +96,20 @@ public class Main {
         }
 
         sc.close();
+        */
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Settings.fxml"));
+        fxmlLoader.setController(gameStoreController);
+        Parent root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("GAME STORE");
+        primaryStage.show();
+        
     }
 
 }

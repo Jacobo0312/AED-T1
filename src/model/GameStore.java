@@ -20,6 +20,9 @@ public class GameStore {
 
     }
 
+    public GameStore() {
+    }
+
     private LinkedList<Cashier> createCashier(int cashiersNumber) {
 
         LinkedList<Cashier> cashiers = new LinkedList<>();

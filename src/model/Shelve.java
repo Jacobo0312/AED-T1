@@ -8,9 +8,10 @@ public class Shelve {
     private int amountGames;
     private LinkedList<Game> gameList;
 
-    public Shelve(String id, int amountGames, LinkedList<Game> gameList) {
+
+    public Shelve(String id,LinkedList<Game> gameList) {
         this.id = id;
-        this.amountGames = amountGames;
+        this.amountGames = gameList.size();
         this.gameList = gameList;
     }
 
