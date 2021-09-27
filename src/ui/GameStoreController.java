@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
-import exceptions.NoIdentificationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -20,13 +19,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.Book;
-import model.Client;
-import model.HashTable;
-import model.Queue;
-import model.ValueComparator;
 
-public class NationalLibraryController {
+
+public class GameStoreController {
 	
 	private Client client;
 	
