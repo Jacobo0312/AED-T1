@@ -1,7 +1,5 @@
 package ui;
 
-import java.util.Scanner;
-import collections.LinkedList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
