@@ -4,4 +4,7 @@
 AED-T1.iml
 /.idea/
 input.txt
+/lib/
+/.settings/
+/.classpath/
 

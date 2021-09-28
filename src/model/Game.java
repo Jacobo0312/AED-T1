@@ -6,12 +6,14 @@ public class Game implements Comparable<Game>{
     private int price;
     private int amount;
     private int value;
+    private String shelve;
 
-    public Game(int code, int price, int amount,int value) {
+    public Game(int code, int price, int amount,String shelve,int value) {
         this.code = code;
         this.price = price;
         this.amount = amount;
         this.value=value;
+        this.shelve=shelve;
     }
 
     public int getCode() {
@@ -48,6 +50,16 @@ public class Game implements Comparable<Game>{
     }
 
 
+    public String getShelve() {
+        return this.shelve;
+    }
+
+    public void setShelve(String shelve) {
+        this.shelve = shelve;
+    }
+
+
+
     @Override
     public String toString() {
         return "CODE: " + getCode() + "     " + "PRICE:" + getPrice() + "     " + "AMOUNT: " + getAmount() + "VALUE: " + getValue()+ "\n";
@@ -55,7 +67,15 @@ public class Game implements Comparable<Game>{
 
     @Override
     public int compareTo(Game o) {
-        return getValue()-(o.getValue());
+
+        if (getShelve().equals(o.getShelve())){
+            return (o.getValue())-getValue();
+        }else{
+            return getShelve().compareTo(o.getShelve());
+        }
+
     }
+
+        
 
 }

@@ -10,10 +10,10 @@ public class Customer implements Comparable<Customer>{
     private int time;
     private StackList<Game> shoppingBag;
 
-    public Customer(int id, LinkedList<Integer> gameList,int time) {
+    public Customer(int id, LinkedList<Game> gameList,int time) {
         this.id = id;
-        this.gameList = gameList;
-        this.games=new LinkedList<>();
+        //this.gameList = gameList;
+        this.games=gameList;
         this.time=time;
         this.shoppingBag=new StackList<>();
     }

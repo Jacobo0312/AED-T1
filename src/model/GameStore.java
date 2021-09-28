@@ -1,33 +1,59 @@
 package model;
 
 import collections.LinkedList;
+import collections.QueueList;
 import collections.StackList;
 
 public class GameStore {
 
-    private int cashiers;
+    private LinkedList<Cashier> cashiers;
     private LinkedList<Shelve> shelves;
     private LinkedList<Customer> customers;
     private LinkedList<Game> games;
 
-    public GameStore(int cashiers, LinkedList<Shelve> shelves, LinkedList<Customer> customers, LinkedList<Game> games) {
-        this.cashiers = cashiers;
+    public GameStore(int cashiersNumber, LinkedList<Shelve> shelves, LinkedList<Customer> customers,
+            LinkedList<Game> games) {
         this.shelves = shelves;
         this.customers = customers;
         this.games = games;
+        this.cashiers = createCashier(cashiersNumber);
+
     }
 
-    public int getCashiers() {
+    public GameStore() {
+    }
+
+    private LinkedList<Cashier> createCashier(int cashiersNumber) {
+
+        LinkedList<Cashier> cashiers = new LinkedList<>();
+
+        for (int i = 0; i < cashiersNumber; i++) {
+            cashiers.add(new Cashier(i));
+        }
+        return cashiers;
+    }
+
+    public LinkedList<Cashier> getCashiers() {
         return this.cashiers;
     }
 
-    public void setCashiers(int cashiers) {
-        this.cashiers = cashiers;
+    public void setCashiers(int cashiersNumber) {
+        this.cashiers = createCashier(cashiersNumber);
     }
 
     public LinkedList<Shelve> getShelves() {
         return this.shelves;
     }
+
+
+    public LinkedList<Game> getGames() {
+        return this.games;
+    }
+
+    public void setGames(LinkedList<Game> games) {
+        this.games = games;
+    }
+
 
     public void setShelves(LinkedList<Shelve> shelves) {
         this.shelves = shelves;
@@ -53,20 +79,14 @@ public class GameStore {
         this.customers = customers;
     }
 
-    @Override
-    public String toString() {
-        return "{" + " cashiers='" + getCashiers() + "'" + ", shelves='" + getShelves() + "'" + ", customers='"
-                + getCustomers() + "'" + "}";
-    }
-
     public String section1() {
+
+        /*
 
         for (Customer customer : customers) {
 
             LinkedList<Game> gameListCustomer = new LinkedList<>();
             LinkedList<Integer> codeGames = customer.getGameList();
-
-            // try with binary search
 
             for (Integer code : codeGames) {
                 for (Game game : games) {
@@ -79,8 +99,10 @@ public class GameStore {
 
             customer.setGames(gameListCustomer);
         }
+        */
 
-        String message = "\nSECTION 1:\n\n";
+        //String message = "\nSECTION 1:\n\n";
+        String message="";
 
         for (Customer customer : customers) {
             message += customer.toString() + "\n";
@@ -91,20 +113,23 @@ public class GameStore {
 
     public String section2() {
 
-        String message = "\nSECTION 2:\n\n";
+        //String message = "\nSECTION 2:\n\n";
+        String message="";
 
         for (Customer customer : customers) {
             // Calculate the best route
             insertionSort(customer.getGames());
             message += customer.toString();
-            message += "TIME: " + customer.getTime() + "\n";
+            message += "TIME: " + customer.getTime() + "\n\n";
         }
 
         return message;
     }
 
     public String section3() {
-        String message = "\nSECTION 3:\n\n";
+        //String message = "\nSECTION 3:\n\n";
+        String message="";
+
 
         for (Customer customer : customers) {
 
@@ -125,8 +150,8 @@ public class GameStore {
 
         for (Customer customer : customers) {
             message += "ID:" + customer.getId() + "\n";
-            message += customer.getShoppingBag().toString();
-            message += "TIME: " + customer.getTime() + "\n";
+            message += customer.getShoppingBag();
+            message += "TIME: " + customer.getTime() + "\n\n";
         }
 
         return message;
@@ -172,6 +197,63 @@ public class GameStore {
                     games.set(j, games.get(j + 1));
                     games.set(j + 1, temp);
                 }
+    }
+
+    private QueueList<Customer> enqueueCustomers() {
+        QueueList<Customer> queueList = new QueueList<>();
+        for (Customer customer : customers) {
+            queueList.enqueue(customer);
+
+        }
+
+        return queueList;
+    }
+
+    public String checkoutLine() {
+        String message = "";
+
+        QueueList<Customer> queueList = enqueueCustomers();
+
+        // message += "\n------CHECKOUT LINE------\n" + queueList;
+
+        int time = 0;
+        Boolean allExit = false;
+
+        while (!allExit) {
+
+            message += "\nTIME: " + time + "\n";
+            time++;
+            for (int i = 0; i < cashiers.size(); i++) {
+                Cashier cashier = cashiers.get(i);
+
+                if (cashier.isEmpty() && !queueList.isEmpty()) {
+
+                    cashier.setCustomer(queueList.dequeue().getItem());
+                } else {
+                    cashier.passGame();
+                    if (cashier.isEmpty() && !queueList.isEmpty())
+                        cashier.setCustomer(queueList.dequeue().getItem());
+                }
+                message += "\n" + cashier + "\n";
+            }
+
+            if (allCashierIsEmpty()) {
+                allExit = true;
+            }
+
+        }
+
+        return message;
+    }
+
+    private boolean allCashierIsEmpty() {
+
+        for (Cashier cashier : cashiers) {
+            if (!cashier.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

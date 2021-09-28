@@ -5,12 +5,11 @@ import collections.LinkedList;
 public class Shelve {
 
     private String id;
-    private int amountGames;
     private LinkedList<Game> gameList;
 
-    public Shelve(String id, int amountGames, LinkedList<Game> gameList) {
+
+    public Shelve(String id,LinkedList<Game> gameList) {
         this.id = id;
-        this.amountGames = amountGames;
         this.gameList = gameList;
     }
 
@@ -22,13 +21,7 @@ public class Shelve {
         this.id = id;
     }
 
-    public int getAmountGames() {
-        return this.amountGames;
-    }
 
-    public void setAmountGames(int amountGames) {
-        this.amountGames = amountGames;
-    }
 
     public LinkedList<Game> getGameList() {
         return this.gameList;

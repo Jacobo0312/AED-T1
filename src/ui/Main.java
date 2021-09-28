@@ -1,12 +1,31 @@
 package ui;
 
-import java.util.Scanner;
-import collections.LinkedList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import model.*;
 
-public class Main {
+public class Main extends Application{
+
+    private GameStoreController gameStoreController;
+    private GameStore gameStore;
+
+
+    
+    public Main(){
+        gameStore = new GameStore();
+        gameStoreController = new GameStoreController(gameStore);
+
+        
+    }
 
     public static void main(String[] args) {
+
+        launch(args);
+
+        /*
 
         Scanner sc = new Scanner(System.in);
         int cases = sc.nextInt();
@@ -21,14 +40,12 @@ public class Main {
 
             for (int j = 0; j < shelves; j++) {
 
-                
-
                 String id = sc.next();
                 int gamesForShelve = sc.nextInt();
                 LinkedList<Game> gamesList = new LinkedList<Game>();
 
-                valueTotal+=gamesForShelve;
-                int value=valueTotal;
+                valueTotal += gamesForShelve;
+                int value = valueTotal;
 
                 for (int k = 0; k < gamesForShelve; k++) {
 
@@ -60,21 +77,37 @@ public class Main {
 
             GameStore gameStore = new GameStore(cashiers, shelvesList, customersList, games);
 
-            System.out.println(gameStore.toStringShelves());
+            // System.out.println(gameStore.toStringShelves());
 
             // SECTION 1 IT WORKS
-            System.out.println(gameStore.section1());
+            gameStore.section1();
 
             // SECTION 2 IT WORKS
-            System.out.println(gameStore.section2());
+            gameStore.section2();
 
             // SECTION 3 IT WORKS
-            System.out.println(gameStore.section3());
+            gameStore.section3();
 
+            // CHECKOUTLINE IT WORKS
+            gameStore.checkoutLine();
 
         }
 
         sc.close();
+        */
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Settings.fxml"));
+        fxmlLoader.setController(gameStoreController);
+        Parent root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("GAME STORE");
+        primaryStage.show();
+        
     }
 
 }
