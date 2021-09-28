@@ -13,7 +13,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -35,6 +38,10 @@ public class GameStoreController {
 
 	@FXML
     private Pane mainPane;
+
+	@FXML
+    private Button buttonNext;
+	
 
 	//SETTINGS
 	
@@ -82,11 +89,15 @@ public class GameStoreController {
     private TableColumn<Game, Integer> priceTable;
 
 
-
-
-
 	//-----
 
+	//SECTIONS
+
+	@FXML
+    private ListView<String> listShelf;
+	@FXML
+    private Label tittle;
+	
 	//Parameters GameStore
 
 
@@ -111,6 +122,7 @@ public class GameStoreController {
 
 		shelvesNumber=Integer.parseInt(numberShelves.getText());
 		cashiersNumber=Integer.parseInt(numberCashiers.getText());
+
 
 
 		loadCreateGame(event);
@@ -141,8 +153,55 @@ public class GameStoreController {
 	}
 
 
-	
-    @FXML
+	@FXML
+	public  void loadShelves(ActionEvent event) throws IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Shelves.fxml"));
+        fxmlLoader.setController(this);
+        Parent pane = fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().addAll(pane);
+
+		gameStore.setShelves(shelves);
+		gameStore.setGames(games);
+
+		tittle.setText("SHELVE");
+		listShelf.getItems().add(gameStore.toStringShelves());
+
+
+		buttonNext.setOnAction((e) -> {
+			try {
+				loadSection1(e);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		  });
+	}
+
+
+	@FXML
+	public  void loadSection1(ActionEvent event) throws IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Shelves.fxml"));
+        fxmlLoader.setController(this);
+        Parent pane = fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().addAll(pane);
+
+
+		tittle.setText("SECTION 1");
+		System.out.println(gameStore.section1());
+		//listShelf.getItems().add();
+	}
+
+
+
+
+
+
+
+
+
+
+	@FXML
     public void addGame(ActionEvent event) {
 
 
@@ -154,10 +213,10 @@ public class GameStoreController {
 
 		for (Shelve shelve : shelves) {
 			if (shelve.getId().equals(idShelve)){
-				Game game=new Game(code, price, amount,idShelve, 0);
+				int value=shelve.getGameList().size();
+				Game game=new Game(code, price, amount,idShelve,value);
 				shelve.getGameList().add(game);
 				games.add(game);
-
 				//Check value
 				//Change for index and value for id
 			}

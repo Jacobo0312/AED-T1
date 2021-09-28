@@ -45,6 +45,16 @@ public class GameStore {
         return this.shelves;
     }
 
+
+    public LinkedList<Game> getGames() {
+        return this.games;
+    }
+
+    public void setGames(LinkedList<Game> games) {
+        this.games = games;
+    }
+
+
     public void setShelves(LinkedList<Shelve> shelves) {
         this.shelves = shelves;
     }
