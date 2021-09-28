@@ -11,19 +11,19 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="codeGame" layoutX="165.0" layoutY="162.0" prefHeight="25.0" prefWidth="161.0" />
+      <TextField fx:id="codeGame" layoutX="165.0" layoutY="162.0" prefHeight="25.0" prefWidth="161.0" styleClass="login" stylesheets="@../../css/fullpackstyling.css" />
       <Label layoutX="101.0" layoutY="101.0" prefHeight="39.0" prefWidth="186.0" style="-fx-background-color: black;" text="Register game" textFill="WHITE">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Button layoutX="158.0" layoutY="392.0" mnemonicParsing="false" onAction="#addGame" prefHeight="25.0" prefWidth="161.0" text="Add">
+      <Button layoutX="158.0" layoutY="392.0" mnemonicParsing="false" onAction="#addGame" prefHeight="25.0" prefWidth="161.0" styleClass="button4" stylesheets="@../../css/fullpackstyling.css" text="Add">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="priceGame" layoutX="165.0" layoutY="266.0" prefHeight="25.0" prefWidth="161.0" />
-      <Button layoutX="556.0" layoutY="411.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadCreateCustomer" prefHeight="35.0" prefWidth="140.0" text="Next">
+      <TextField fx:id="priceGame" layoutX="165.0" layoutY="266.0" prefHeight="25.0" prefWidth="161.0" styleClass="login" stylesheets="@../../css/fullpackstyling.css" />
+      <Button layoutX="556.0" layoutY="411.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadCreateCustomer" prefHeight="35.0" prefWidth="140.0" styleClass="button4" stylesheets="@../../css/fullpackstyling.css" text="Next">
          <font>
             <Font size="18.0" />
          </font>
@@ -48,8 +48,8 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <TextField fx:id="quantityGame" layoutX="165.0" layoutY="322.0" prefHeight="25.0" prefWidth="161.0" />
-      <TableView fx:id="tableGames" layoutX="340.0" layoutY="169.0" prefHeight="180.0" prefWidth="477.0">
+      <TextField fx:id="quantityGame" layoutX="165.0" layoutY="322.0" prefHeight="25.0" prefWidth="161.0" styleClass="login" stylesheets="@../../css/fullpackstyling.css" />
+      <TableView fx:id="tableGames" layoutX="340.0" layoutY="169.0" prefHeight="180.0" prefWidth="477.0" stylesheets="@../../css/fullpackstyling.css">
          <columns>
             <TableColumn fx:id="codeGameTable" prefWidth="142.0" text="Game's code" />
             <TableColumn fx:id="shelfTable" prefWidth="131.0" text="Shelf" />

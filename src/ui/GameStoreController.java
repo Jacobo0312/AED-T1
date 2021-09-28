@@ -258,7 +258,6 @@ public class GameStoreController {
 
 		gameStore.setCustomers(customerList);
 
-
 		tittle.setText("SHELVE");
 		listShelf.getItems().add(gameStore.toStringShelves());
 
