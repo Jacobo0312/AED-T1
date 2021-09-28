@@ -7,4 +7,5 @@ input.txt
 /lib/
 /.settings/
 /.classpath/
+.project
 
