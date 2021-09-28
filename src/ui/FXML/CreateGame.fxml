@@ -23,7 +23,7 @@
          </font>
       </Button>
       <TextField fx:id="priceGame" layoutX="165.0" layoutY="266.0" prefHeight="25.0" prefWidth="161.0" />
-      <Button layoutX="556.0" layoutY="411.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadShelves" prefHeight="35.0" prefWidth="140.0" text="Next">
+      <Button layoutX="556.0" layoutY="411.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadCreateCustomer" prefHeight="35.0" prefWidth="140.0" text="Next">
          <font>
             <Font size="18.0" />
          </font>

@@ -67,7 +67,15 @@ public class Game implements Comparable<Game>{
 
     @Override
     public int compareTo(Game o) {
-        return getValue()-(o.getValue());
+
+        if (getShelve().equals(o.getShelve())){
+            return (o.getValue())-getValue();
+        }else{
+            return getShelve().compareTo(o.getShelve());
+        }
+
     }
+
+        
 
 }

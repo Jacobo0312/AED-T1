@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 import collections.LinkedList;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,8 +16,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -91,6 +94,26 @@ public class GameStoreController {
 
 	//-----
 
+	//CREATE CUSTOMER
+
+	@FXML
+    private TextField idCustomer;
+
+    @FXML
+    private ListView<Game> listGamesCustomer;
+
+	@FXML
+    private ListView<Customer> listCustomer;
+
+	@FXML
+	private ObservableList<Game> listGames;
+
+	private int time=1;
+
+	
+
+	//-------------
+
 	//SECTIONS
 
 	@FXML
@@ -123,6 +146,8 @@ public class GameStoreController {
 		shelvesNumber=Integer.parseInt(numberShelves.getText());
 		cashiersNumber=Integer.parseInt(numberCashiers.getText());
 
+		gameStore.setCashiers(cashiersNumber);
+
 
 
 		loadCreateGame(event);
@@ -154,15 +179,85 @@ public class GameStoreController {
 
 
 	@FXML
-	public  void loadShelves(ActionEvent event) throws IOException{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Shelves.fxml"));
+	public  void loadCreateCustomer(ActionEvent event) throws IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/CreateCustomer.fxml"));
         fxmlLoader.setController(this);
         Parent pane = fxmlLoader.load();
         mainPane.getChildren().clear();
         mainPane.getChildren().addAll(pane);
 
+
+		
 		gameStore.setShelves(shelves);
 		gameStore.setGames(games);
+
+		LinkedList<Game> games=gameStore.getGames();
+
+
+	for (Game game : games) {
+		listGamesCustomer.getItems().addAll(game);
+		
+	}
+
+
+
+	listGamesCustomer.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+	listGames = listGamesCustomer.getSelectionModel().getSelectedItems();
+
+	buttonNext.setOnAction((e) -> {
+		try {
+			loadShelves(event);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	  });
+
+			
+	}
+
+
+	@FXML
+    public void addCustomer(ActionEvent event) {
+
+		LinkedList<Game> customerGameList=new LinkedList<>();
+
+		for (Game game : listGames) {
+			customerGameList.add(game);
+			
+		}
+
+
+		Customer customer=new Customer(Integer.parseInt(idCustomer.getText()),customerGameList, time++);
+
+
+		customers.add(customer);
+		listCustomer.getItems().add(customer);
+
+
+		
+
+
+    }
+
+	@FXML
+	public  void loadShelves(ActionEvent event) throws IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Sections.fxml"));
+        fxmlLoader.setController(this);
+        Parent pane = fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().addAll(pane);
+
+
+		LinkedList<Customer> customerList=new LinkedList<>();
+		for (Customer customer : listCustomer.getItems()) {
+			customerList.add(customer);
+			
+		}
+
+
+		gameStore.setCustomers(customerList);
+
 
 		tittle.setText("SHELVE");
 		listShelf.getItems().add(gameStore.toStringShelves());
@@ -180,7 +275,7 @@ public class GameStoreController {
 
 	@FXML
 	public  void loadSection1(ActionEvent event) throws IOException{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Shelves.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Sections.fxml"));
         fxmlLoader.setController(this);
         Parent pane = fxmlLoader.load();
         mainPane.getChildren().clear();
@@ -188,17 +283,92 @@ public class GameStoreController {
 
 
 		tittle.setText("SECTION 1");
-		System.out.println(gameStore.section1());
+		listShelf.getItems().add(gameStore.section1());
 		//listShelf.getItems().add();
+
+
+		buttonNext.setOnAction((e) -> {
+			try {
+				loadSection2(e);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		  });
 	}
 
 
 
+	public  void loadSection2(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Sections.fxml"));
+        fxmlLoader.setController(this);
+        Parent pane = fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().addAll(pane);
 
 
+		tittle.setText("SECTION 2");
+		listShelf.getItems().add(gameStore.section2());
+		//listShelf.getItems().add();
+
+		buttonNext.setOnAction((e) -> {
+			try {
+				loadSection3(e);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		  });
 
 
+	
+	}
 
+
+	public  void loadSection3(ActionEvent event) throws IOException {
+
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Sections.fxml"));
+        fxmlLoader.setController(this);
+        Parent pane = fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().addAll(pane);
+
+
+		tittle.setText("SECTION 3");
+		listShelf.getItems().add(gameStore.section3());
+		
+
+		buttonNext.setOnAction((e) -> {
+			try {
+				checkoutLine(e);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		  });
+
+	}
+
+
+	private void checkoutLine(ActionEvent event) throws IOException {
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Sections.fxml"));
+        fxmlLoader.setController(this);
+        Parent pane = fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().addAll(pane);
+
+
+		tittle.setText("CHECKOUT LINE");
+		listShelf.getItems().add(gameStore.checkoutLine());
+
+		buttonNext.setText("FINISH");
+
+
+		buttonNext.setOnAction((e) -> {
+			Platform.exit();
+		  });
+		
+
+		
+	}
 
 
 	@FXML

@@ -37,8 +37,8 @@ public class GameStore {
         return this.cashiers;
     }
 
-    public void setCashiers(LinkedList<Cashier> cashiers) {
-        this.cashiers = cashiers;
+    public void setCashiers(int cashiersNumber) {
+        this.cashiers = createCashier(cashiersNumber);
     }
 
     public LinkedList<Shelve> getShelves() {
@@ -81,6 +81,8 @@ public class GameStore {
 
     public String section1() {
 
+        /*
+
         for (Customer customer : customers) {
 
             LinkedList<Game> gameListCustomer = new LinkedList<>();
@@ -97,8 +99,10 @@ public class GameStore {
 
             customer.setGames(gameListCustomer);
         }
+        */
 
-        String message = "\nSECTION 1:\n\n";
+        //String message = "\nSECTION 1:\n\n";
+        String message="";
 
         for (Customer customer : customers) {
             message += customer.toString() + "\n";
@@ -109,7 +113,8 @@ public class GameStore {
 
     public String section2() {
 
-        String message = "\nSECTION 2:\n\n";
+        //String message = "\nSECTION 2:\n\n";
+        String message="";
 
         for (Customer customer : customers) {
             // Calculate the best route
@@ -122,7 +127,9 @@ public class GameStore {
     }
 
     public String section3() {
-        String message = "\nSECTION 3:\n\n";
+        //String message = "\nSECTION 3:\n\n";
+        String message="";
+
 
         for (Customer customer : customers) {
 
