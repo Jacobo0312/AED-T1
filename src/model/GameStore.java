@@ -10,6 +10,7 @@ public class GameStore {
     private LinkedList<Shelve> shelves;
     private LinkedList<Customer> customers;
     private LinkedList<Game> games;
+    private LinkedList<Customer> output;
 
     public GameStore(int cashiersNumber, LinkedList<Shelve> shelves, LinkedList<Customer> customers,
             LinkedList<Game> games) {
@@ -17,10 +18,12 @@ public class GameStore {
         this.customers = customers;
         this.games = games;
         this.cashiers = createCashier(cashiersNumber);
+        
 
     }
 
     public GameStore() {
+        this.output=new LinkedList<>();
     }
 
     private LinkedList<Cashier> createCashier(int cashiersNumber) {
@@ -227,12 +230,20 @@ public class GameStore {
                 Cashier cashier = cashiers.get(i);
 
                 if (cashier.isEmpty() && !queueList.isEmpty()) {
+                    Customer customer=queueList.dequeue().getItem();
 
-                    cashier.setCustomer(queueList.dequeue().getItem());
+                    cashier.setCustomer(customer);
+                    output.add(customer);
                 } else {
                     cashier.passGame();
-                    if (cashier.isEmpty() && !queueList.isEmpty())
-                        cashier.setCustomer(queueList.dequeue().getItem());
+                    if (cashier.isEmpty() && !queueList.isEmpty()){
+                        Customer customer=queueList.dequeue().getItem();
+
+                    cashier.setCustomer(customer);
+                    output.add(customer);
+                    }
+
+                    
                 }
                 message += "\n" + cashier + "\n";
             }
@@ -241,6 +252,23 @@ public class GameStore {
                 allExit = true;
             }
 
+        }
+
+        return message;
+    }
+
+
+    public String getOutput(){
+        String message="";
+
+        for (Customer customer : output) {
+            message+="\n\nID: "+customer.getId()+"\n";
+
+            LinkedList<Game> gList=customer.getGames();
+            for (Game game : gList) {
+                message+=game+"\n";
+            }
+            
         }
 
         return message;

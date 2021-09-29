@@ -1,34 +1,26 @@
 package ui;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 import collections.LinkedList;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.Customer;
 import model.Game;
 import model.GameStore;
@@ -358,6 +350,34 @@ public class GameStoreController {
 		tittle.setText("CHECKOUT LINE");
 		listShelf.getItems().add(gameStore.checkoutLine());
 
+	
+
+
+		buttonNext.setOnAction((e) -> {
+			try {
+				output(e);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		  });
+		
+
+		
+	}
+
+
+	private void output(ActionEvent event) throws IOException {
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Sections.fxml"));
+        fxmlLoader.setController(this);
+        Parent pane = fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().addAll(pane);
+
+
+		tittle.setText("OUTPUT");
+		listShelf.getItems().add(gameStore.getOutput());
+
 		buttonNext.setText("FINISH");
 
 
@@ -368,6 +388,7 @@ public class GameStoreController {
 
 		
 	}
+
 
 
 	@FXML

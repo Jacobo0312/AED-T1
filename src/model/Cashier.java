@@ -68,8 +68,15 @@ public class Cashier {
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", customer='" + getCustomer() + "'" + ", purchase='" + getPurchase()
-                + "'" + ", invoice='" + getInvoice() + "'" + "}";
+
+        String message;
+        if (getCustomer()==null){
+            message="isEmpty";
+        }else{
+            message=getCustomer()+"";
+        }
+
+        return "CASHIER: " + getId() + "\nCUSTOMER:" + message +"\nPurchase:\n" + getPurchase()+ "\nInvoice: " + getInvoice() +"\n";
     }
 
     public boolean isEmpty() {
