@@ -9,6 +9,8 @@ public class Customer implements Comparable<Customer>{
     private LinkedList<Game> games;
     private int time;
     private StackList<Game> shoppingBag;
+    private int invoice;
+
 
     public Customer(int id, LinkedList<Game> gameList,int time) {
         this.id = id;
@@ -16,6 +18,7 @@ public class Customer implements Comparable<Customer>{
         this.games=gameList;
         this.time=time;
         this.shoppingBag=new StackList<>();
+        this.invoice=0;
     }
 
     public int getId() {
@@ -50,6 +53,16 @@ public class Customer implements Comparable<Customer>{
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+
+
+    public int getInvoice() {
+        return this.invoice;
+    }
+
+    public void setInvoice(int invoice) {
+        this.invoice = invoice;
     }
 
 

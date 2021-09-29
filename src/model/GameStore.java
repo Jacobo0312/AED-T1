@@ -263,10 +263,11 @@ public class GameStore {
 
         for (Customer customer : output) {
             message+="\n\nID: "+customer.getId()+"\n";
+            message+=customer.getInvoice()+"\n";
 
             LinkedList<Game> gList=customer.getGames();
             for (Game game : gList) {
-                message+=game+"\n";
+                message+=game.getCode()+" ";
             }
             
         }

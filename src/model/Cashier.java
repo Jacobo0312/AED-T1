@@ -52,7 +52,7 @@ public class Cashier {
 
         if (customer != null) {
             if (customer.getShoppingBag().isEmpty()) {
-
+                customer.setInvoice(invoice);
                 customer = null;
                 invoice = 0;
                 purchase = new StackList<Game>();
