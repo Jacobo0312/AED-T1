@@ -11,14 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import model.Customer;
@@ -109,7 +102,7 @@ public class GameStoreController {
 	//SECTIONS
 
 	@FXML
-    private ListView<String> listShelf;
+    private TextArea listShelf;
 	@FXML
     private Label tittle;
 	
@@ -251,7 +244,7 @@ public class GameStoreController {
 		gameStore.setCustomers(customerList);
 
 		tittle.setText("SHELVE");
-		listShelf.getItems().add(gameStore.toStringShelves());
+		listShelf.setText(gameStore.toStringShelves());
 
 
 		buttonNext.setOnAction((e) -> {
@@ -274,7 +267,7 @@ public class GameStoreController {
 
 
 		tittle.setText("SECTION 1");
-		listShelf.getItems().add(gameStore.section1());
+		listShelf.setText(gameStore.section1());
 		//listShelf.getItems().add();
 
 
@@ -298,7 +291,7 @@ public class GameStoreController {
 
 
 		tittle.setText("SECTION 2");
-		listShelf.getItems().add(gameStore.section2());
+		listShelf.setText(gameStore.section2());
 		//listShelf.getItems().add();
 
 		buttonNext.setOnAction((e) -> {
@@ -324,7 +317,7 @@ public class GameStoreController {
 
 
 		tittle.setText("SECTION 3");
-		listShelf.getItems().add(gameStore.section3());
+		listShelf.setText(gameStore.section3());
 		
 
 		buttonNext.setOnAction((e) -> {
@@ -348,7 +341,7 @@ public class GameStoreController {
 
 
 		tittle.setText("CHECKOUT LINE");
-		listShelf.getItems().add(gameStore.checkoutLine());
+		listShelf.setText(gameStore.checkoutLine());
 
 	
 
@@ -376,7 +369,7 @@ public class GameStoreController {
 
 
 		tittle.setText("OUTPUT");
-		listShelf.getItems().add(gameStore.getOutput());
+		listShelf.setText(gameStore.getOutput());
 
 		buttonNext.setText("FINISH");
 
