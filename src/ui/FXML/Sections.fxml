@@ -2,22 +2,27 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="613.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="818.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="tittle" alignment="CENTER" layoutX="59.0" layoutY="36.0" prefHeight="39.0" prefWidth="495.0" style="-fx-background-color: transparent;" text="TITLE" textFill="WHITE">
+      <Label fx:id="tittle" alignment="CENTER" layoutX="162.0" layoutY="48.0" prefHeight="39.0" prefWidth="495.0" style="-fx-background-color: transparent;" text="TITLE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="buttonNext" layoutX="237.0" layoutY="514.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#settingGameStore" prefHeight="35.0" prefWidth="140.0" text="Next">
+      <Button fx:id="buttonNext" layoutX="339.0" layoutY="402.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#settingGameStore" prefHeight="51.0" prefWidth="140.0" style="-fx-background-color: lightblue; -fx-background-radius: 10; -fx-border-color: #ffb300; -fx-border-radius: 10; -fx-border-width: 2px;" text="Next">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextArea fx:id="listShelf" editable="false" layoutX="59.0" layoutY="92.0" prefHeight="394.0" prefWidth="495.0" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="162.0" layoutY="116.0">
+         <content>
+            <TextArea fx:id="listShelf" editable="false" prefHeight="260.0" prefWidth="495.0" wrapText="true" />
+         </content>
+      </ScrollPane>
    </children>
 </Pane>
