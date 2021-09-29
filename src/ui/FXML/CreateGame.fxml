@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="852.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="818.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="codeGame" layoutX="165.0" layoutY="162.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: transparent; -fx-border-color: #ffc107; -fx-border-width: 0px 0px 2px 0px;" />
       <Button layoutX="214.0" layoutY="390.0" mnemonicParsing="false" onAction="#addGame" prefHeight="39.0" prefWidth="64.0" style="-fx-background-color: lightblue; -fx-background-radius: 10; -fx-border-color: #ffb300; -fx-border-radius: 10; -fx-border-width: 2px;" text="Add">
@@ -18,13 +18,13 @@
          </font>
       </Button>
       <TextField fx:id="priceGame" layoutX="165.0" layoutY="265.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: transparent; -fx-border-color: #ffc107; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button layoutX="687.0" layoutY="390.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadCreateCustomer" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: lightblue; -fx-background-radius: 10; -fx-border-color: #ffb300; -fx-border-radius: 10; -fx-border-width: 2px;" text="Next">
+      <Button layoutX="651.0" layoutY="392.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadCreateCustomer" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: lightblue; -fx-background-radius: 10; -fx-border-color: #ffb300; -fx-border-radius: 10; -fx-border-width: 2px;" text="Next">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
       <TextField fx:id="quantityGame" layoutX="165.0" layoutY="322.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: transparent; -fx-border-color: #ffc107; -fx-border-width: 0px 0px 2px 0px;" />
-      <TableView fx:id="tableGames" layoutX="340.0" layoutY="169.0" prefHeight="180.0" prefWidth="477.0">
+      <TableView fx:id="tableGames" layoutX="340.0" layoutY="169.0" prefHeight="180.0" prefWidth="441.0">
          <columns>
             <TableColumn fx:id="codeGameTable" minWidth="-1.0" prefWidth="-1.0" text="Game's code" />
             <TableColumn fx:id="shelfTable" minWidth="-1.0" prefWidth="-1.0" text="Shelf" />
