@@ -121,7 +121,14 @@ public class GameStore {
 
         for (Customer customer : customers) {
             // Calculate the best route
-            insertionSort(customer.getGames());
+
+            double test=Math.random()*2;
+            if (test>1){
+                insertionSort(customer.getGames());
+            }else{
+                bubbleSort(customer.getGames());
+            }
+            
             message += customer.toString();
             message += "TIME: " + customer.getTime() + "\n\n";
         }
