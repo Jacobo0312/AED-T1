@@ -7,35 +7,40 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="818.0" style="-fx-background-color: gray;" stylesheets="@../../css/fullpackstyling.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="idCustomer" layoutX="165.0" layoutY="162.0" prefHeight="25.0" prefWidth="161.0" />
-      <Label layoutX="101.0" layoutY="101.0" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: black;" text="Register customer" textFill="WHITE">
+      <TextField fx:id="idCustomer" layoutX="220.0" layoutY="112.0" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: #ffc107; -fx-border-width: 0px 0px 2px 0px;" />
+      <Label alignment="CENTER" layoutX="300.0" layoutY="47.0" prefHeight="39.0" prefWidth="218.0" style="-fx-background-color: transparent;" text="Register customer" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="27.0" />
+            <Font name="Gill Sans MT" size="27.0" />
          </font>
       </Label>
-      <Button layoutX="165.0" layoutY="420.0" mnemonicParsing="false" onAction="#addCustomer" prefHeight="25.0" prefWidth="161.0" text="Register">
+      <Button layoutX="265.0" layoutY="409.0" mnemonicParsing="false" onAction="#addCustomer" prefHeight="39.0" prefWidth="110.0" style="-fx-background-color: lightblue; -fx-background-radius: 10; -fx-border-color: #ffb300; -fx-border-radius: 10; -fx-border-width: 2px;" text="Register">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="buttonNext" layoutX="556.0" layoutY="411.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="140.0" text="Next">
+      <Button fx:id="buttonNext" layoutX="571.0" layoutY="409.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" style="-fx-background-color: lightblue; -fx-background-radius: 10; -fx-border-color: #ffb300; -fx-border-radius: 10; -fx-border-width: 2px;" text="Next">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label layoutX="120.0" layoutY="155.0" prefHeight="39.0" prefWidth="38.0" style="-fx-background-color: black;" text="ID:" textFill="WHITE">
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="23.0" layoutY="112.0" prefHeight="39.0" prefWidth="168.0" style="-fx-background-color: transparent;" text="Customer ID:" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="27.0" />
+            <Font name="Gill Sans MT" size="27.0" />
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="202.0" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: black;" text="Games:" textFill="WHITE">
+      <Label alignment="CENTER_RIGHT" layoutX="23.0" layoutY="189.0" prefHeight="39.0" prefWidth="168.0" style="-fx-background-color: transparent;" text="Games:" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="27.0" />
+            <Font name="Gill Sans MT" size="27.0" />
          </font>
       </Label>
-      <ListView fx:id="listGamesCustomer" layoutX="139.0" layoutY="202.0" prefHeight="200.0" prefWidth="200.0" />
-      <ListView fx:id="listCustomer" layoutX="478.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="listGamesCustomer" layoutX="220.0" layoutY="189.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/fullpackstyling.css" />
+      <ListView fx:id="listCustomer" layoutX="526.0" layoutY="189.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="556.0" layoutY="132.0" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="Customers" textFill="WHITE">
+         <font>
+            <Font name="Gill Sans MT" size="27.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
