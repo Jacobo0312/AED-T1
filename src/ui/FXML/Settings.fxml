@@ -7,28 +7,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="818.0">
+      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="818.0" style="-fx-background-color: gray;">
          <children>
-            <TextField fx:id="numberShelves" layoutX="286.0" layoutY="153.0" />
-            <TextField fx:id="numberCashiers" layoutX="286.0" layoutY="257.0" />
-            <Label layoutX="240.0" layoutY="102.0" style="-fx-background-color: black;" text="Number of Shelves:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="27.0" />
-               </font>
-            </Label>
-            <Label layoutX="193.0" layoutY="201.0" style="-fx-background-color: black;" text="Number of cash registers:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="27.0" />
-               </font>
-            </Label>
-            <Button layoutX="280.0" layoutY="400.0" mnemonicParsing="false" onAction="#settingGameStore" prefHeight="57.0" prefWidth="161.0" text="Start">
+            <TextField fx:id="numberShelves" alignment="CENTER" layoutX="345.0" layoutY="150.0" style="-fx-background-color: transparent; -fx-border-color: #ffc107; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="numberCashiers" alignment="CENTER" layoutX="347.0" layoutY="298.0" style="-fx-background-color: transparent; -fx-border-color: #ffc107; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button layoutX="339.0" layoutY="380.0" mnemonicParsing="false" onAction="#settingGameStore" prefHeight="42.0" prefWidth="161.0" style="-fx-background-color: lightblue; -fx-background-radius: 10; -fx-border-color: #ffb300; -fx-border-radius: 10; -fx-border-width: 2px;" text="Start">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
+            <Label alignment="CENTER" layoutX="256.0" layoutY="76.0" prefHeight="39.0" prefWidth="329.0" style="-fx-background-color: transparent;" text="Number of Shelves" textFill="WHITE">
+               <font>
+                  <Font name="Gill Sans MT" size="30.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="224.0" layoutY="220.0" prefHeight="39.0" prefWidth="389.0" style="-fx-background-color: transparent;" text="Number of cash registers" textFill="WHITE">
+               <font>
+                  <Font name="Gill Sans MT" size="30.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>
